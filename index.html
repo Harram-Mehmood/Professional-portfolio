@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harram Mehmood - Growth Manager & MVP Specialist</title>
+    <meta name="description" content="Transform your startup idea into a market-ready MVP in 90 days. Expert growth management and development services by Harram Mehmood.">
+    <meta name="keywords" content="MVP development, startup consultant, growth manager, web development, mobile apps, SaaS development">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #1a2332;
+            --secondary: #6b7280;
+            --accent: #10b981;
+            --background: #fafafa;
+            --text: #374151;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(250, 250, 250, 0.95);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        
+        .contact-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--card-bg);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
+            border-color: var(--accent);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 25s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg) scale(1); }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1.1); }
+            100% { transform: translateY(-100vh) rotate(360deg) scale(1); }
+        }
+        
+        .shape:nth-child(2) { animation-delay: -6s; animation-duration: 28s; }
+        .shape:nth-child(3) { animation-delay: -12s; animation-duration: 32s; }
+        .shape:nth-child(4) { animation-delay: -18s; animation-duration: 26s; }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #059669);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 4px;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 4rem 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            border-left: 4px solid var(--accent);
+        }
+        
+        .form-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .form-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            color: #ef4444;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape w-24 h-24 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full" style="left: 8%; animation-duration: 28s;"></div>
+        <div class="shape w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg rotate-45" style="left: 25%; animation-duration: 32s;"></div>
+        <div class="shape w-28 h-28 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full" style="left: 65%; animation-duration: 35s;"></div>
+        <div class="shape w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg" style="left: 85%; animation-duration: 30s;"></div>
+        <div class="shape w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full" style="left: 45%; animation-duration: 25s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="logo-container">
+                    <img src="https://image2url.com/images/1765164278952-9eac1aab-8d79-4807-8cb0-31dd245fdf93.png" alt="Harram Mehmood Logo" class="logo">
+                    <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
+                        Harram Mehmood
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-emerald-600 transition-all duration-300 font-medium relative group">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="about.html" class="text-gray-700 hover:text-emerald-600 transition-all duration-300 font-medium relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="experience.html" class="text-gray-700 hover:text-emerald-600 transition-all duration-300 font-medium relative group">
+                        Experience
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="contact.html" class="text-emerald-600 font-semibold relative">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-600"></span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="logo-container">
+                        <img src="https://image2url.com/images/1765164278952-9eac1aab-8d79-4807-8cb0-31dd245fdf93.png" alt="Harram Mehmood Logo" class="logo">
+                        <span class="text-xl font-bold">Harram Mehmood</span>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Close menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="space-y-6">
+                    <a href="index.html" class="block text-gray-700 hover:text-emerald-600 transition-colors font-medium text-lg py-2">Home</a>
+                    <a href="about.html" class="block text-gray-700 hover:text-emerald-600 transition-colors font-medium text-lg py-2">About</a>
+                    <a href="experience.html" class="block text-gray-700 hover:text-emerald-600 transition-colors font-medium text-lg py-2">Experience</a>
+                    <a href="contact.html" class="block text-emerald-600 font-semibold text-lg py-2">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-emerald-50 via-white to-blue-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight" data-splitting>
+                    Let's Build Your 
+                    <span class="bg-gradient-to-br from-emerald-600 to-blue-600 bg-clip-text">MVP</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed">
+                    Transform your startup idea into a market-ready product in just 90 days. 
+                    Expert guidance from concept to launch with proven methodologies.
+                </p>
+                
+                <div class="flex flex-wrap justify-center items-center gap-8 text-base text-gray-600 mb-12">
+                    <div class="flex items-center group">
+                        <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center mr-3 group-hover:bg-emerald-200 transition-colors">
+                            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <span class="font-medium">24-Hour Response</span>
+                    </div>
+                    <div class="flex items-center group">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-200 transition-colors">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                        </div>
+                        <span class="font-medium">Free Consultation</span>
+                    </div>
+                    <div class="flex items-center group">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3 group-hover:bg-purple-200 transition-colors">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                        </div>
+                        <span class="font-medium">NDA Protection</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#contact-form" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                        Start Your Project
+                    </a>
+                    <a href="https://wa.me/923701662757" target="_blank" class="border-2 border-gray-300 text-gray-700 hover:border-emerald-500 hover:text-emerald-600 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300">
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            Chat on WhatsApp
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="py-20 bg-white relative" id="contact-form">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to discuss your project? Fill out the form below and I'll get back to you within 24 hours.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+                <!-- Contact Form -->
+                <div class="lg:col-span-3">
+                    <div class="bg-gray-50 rounded-2xl p-8 shadow-lg">
+                        <form id="contact-form-element" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="first-name" class="block text-sm font-semibold text-gray-700 mb-2">First Name *</label>
+                                    <input type="text" id="first-name" name="first-name" required 
+                                           class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
+                                           placeholder="Your first name">
+                                    <span class="error-message text-red-500 text-sm hidden">Please enter your first name</span>
+                                </div>
+                                <div>
+                                    <label for="last-name" class="block text-sm font-semibold text-gray-700 mb-2">Last Name *</label>
+                                    <input type="text" id="last-name" name="last-name" required 
+                                           class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
+                                           placeholder="Your last name">
+                                    <span class="error-message text-red-500 text-sm hidden">Please enter your last name</span>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
+                                       placeholder="your.email@example.com">
+                                <span class="error-message text-red-500 text-sm hidden">Please enter a valid email address</span>
+                            </div>
+                            
+                            <div>
+                                <label for="company" class="block text-sm font-semibold text-gray-700 mb-2">Company/Startup Name</label>
+                                <input type="text" id="company" name="company" 
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
+                                       placeholder="Your company name (optional)">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="project-type" class="block text-sm font-semibold text-gray-700 mb-2">Project Type</label>
+                                    <select id="project-type" name="project-type" 
+                                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300">
+                                        <option value="">Select project type</option>
+                                        <option value="web-app">Web Application</option>
+                                        <option value="mobile-app">Mobile Application</option>
+                                        <option value="saas">SaaS Platform</option>
+                                        <option value="ecommerce">E-commerce</option>
+                                        <option value="marketplace">Marketplace</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="budget" class="block text-sm font-semibold text-gray-700 mb-2">Budget Range</label>
+                                    <select id="budget" name="budget" 
+                                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300">
+                                        <option value="">Select budget range</option>
+                                        <option value="5k-10k">$5,000 - $10,000</option>
+                                        <option value="10k-20k">$10,000 - $20,000</option>
+                                        <option value="20k-50k">$20,000 - $50,000</option>
+                                        <option value="50k+">$50,000+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="timeline" class="block text-sm font-semibold text-gray-700 mb-2">Expected Timeline</label>
+                                <select id="timeline" name="timeline" 
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300">
+                                    <option value="">Select timeline</option>
+                                    <option value="urgent">Urgent (Less than 30 days)</option>
+                                    <option value="1-3-months">1-3 Months</option>
+                                    <option value="3-6-months">3-6 Months</option>
+                                    <option value="6-months-plus">6+ Months</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Project Description *</label>
+                                <textarea id="message" name="message" rows="6" required 
+                                          placeholder="Tell me about your project vision, goals, target audience, and any specific requirements..."
+                                          class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300 resize-none"></textarea>
+                                <span class="error-message text-red-500 text-sm hidden">Please describe your project</span>
+                            </div>
+                            
+                            <div class="highlight-box rounded-lg p-4">
+                                <p class="text-sm text-gray-700">
+                                    <strong>Privacy Notice:</strong> Your information is secure and will only be used to respond to your inquiry. 
+                                    I respect your privacy and do not share information with third parties.
+                                </p>
+                            </div>
+                            
+                            <div id="form-message" class="hidden rounded-lg p-4 mb-4"></div>
+                            
+                            <div>
+                                <button type="submit" id="submit-btn"
+                                        class="btn-primary w-full bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center">
+                                    <span id="submit-text">Send Message</span>
+                                    <svg id="submit-loading" class="hidden w-5 h-5 ml-2 animate-spin" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="lg:col-span-2">
+                    <div class="space-y-6 mb-12">
+                        <div class="contact-card bg-white border border-gray-200 rounded-xl p-6 hover:border-emerald-300">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Email</h3>
+                                    <a href="mailto:harrammehmood1102@gmail.com" class="text-emerald-600 hover:text-emerald-700 transition-colors">
+                                        harrammehmood1102@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-300">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">LinkedIn</h3>
+                                    <a href="https://www.linkedin.com/in/harram-mehmood-71b508287" target="_blank" class="text-emerald-600 hover:text-emerald-700 transition-colors">
+                                        Connect on LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card bg-white border border-gray-200 rounded-xl p-6 hover:border-green-300">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">WhatsApp</h3>
+                                    <a href="https://wa.me/923701662757" target="_blank" class="text-emerald-600 hover:text-emerald-700 transition-colors">
+                                        Chat on WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card bg-white border border-gray-200 rounded-xl p-6 hover:border-purple-300">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Location</h3>
+                                    <p class="text-gray-600">Faisalabad, Punjab, Pakistan</p>
+                                    <p class="text-sm text-gray-500">Available for remote work worldwide</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Availability -->
+                    <div class="bg-gradient-to-br from-emerald-50 to-blue-50 rounded-2xl p-8 border border-emerald-100">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Availability</h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                <span class="text-gray-600 font-medium">Monday - Friday</span>
+                                <span class="font-semibold text-emerald-600">9:00 AM - 6:00 PM (PKT)</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                <span class="text-gray-600 font-medium">Saturday</span>
+                                <span class="font-semibold text-emerald-600">10:00 AM - 2:00 PM (PKT)</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-100 rounded-lg">
+                                <span class="text-gray-600 font-medium">Sunday</span>
+                                <span class="font-semibold text-gray-500">Closed</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 border-l-4 border-emerald-500">
+                            <p class="text-sm text-gray-700">
+                                <strong>Response Time:</strong> I typically respond to all inquiries within 24 hours during business days. 
+                                <strong>Emergency support</strong> available for urgent matters.
+                            </p>
+                        </div>
+                        
+                        <div class="mt-6 flex flex-col gap-3">
+                            <a href="https://calendly.com/harram-mehmood" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-lg font-semibold text-center transition-all duration-300">
+                                Schedule a Call
+                            </a>
+                            <p class="text-center text-sm text-gray-600">
+                                Or book a free 30-minute consultation
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Everything you need to know about working together on your MVP
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-start mb-4">
+                            <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                <span class="text-emerald-600 font-bold text-sm">Q1</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">How long does it take to launch an MVP?</h3>
+                        </div>
+                        <p class="text-gray-600 pl-11">
+                            Most MVPs can be launched within 90 days, depending on complexity and scope. This includes discovery, design, development, and testing phases.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-start mb-4">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                <span class="text-blue-600 font-bold text-sm">Q2</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">What's included in the MVP development process?</h3>
+                        </div>
+                        <p class="text-gray-600 pl-11">
+                            The process includes market research, UX/UI design, development, testing, launch support, and post-launch optimization based on user feedback.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-start mb-4">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                <span class="text-purple-600 font-bold text-sm">Q3</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Do you work with international clients?</h3>
+                        </div>
+                        <p class="text-gray-600 pl-11">
+                            Yes, I work with startups from around the world. I'm based in Pakistan but have experience working with clients across different time zones.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-start mb-4">
+                            <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                <span class="text-orange-600 font-bold text-sm">Q4</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">What happens after the MVP launch?</h3>
+                        </div>
+                        <p class="text-gray-600 pl-11">
+                            Post-launch, I provide support for user acquisition, performance optimization, and feature enhancements based on real user data and feedback.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <p class="text-gray-600 mb-4">Have more questions?</p>
+                    <a href="#contact-form" class="text-emerald-600 hover:text-emerald-700 font-semibold transition-colors">
+                        Contact me directly →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-blue-500/10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-8">
+                Ready to Launch Your MVP?
+            </h2>
+            <p class="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Don't let your startup idea remain just an idea. Let's work together to bring it to life in the next 90 days 
+                with a proven, systematic approach to MVP development.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="#contact-form" class="btn-primary bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300 shadow-lg hover:shadow-2xl">
+                    Start Your Project Today
+                </a>
+                <a href="https://wa.me/923701662757" target="_blank" class="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300">
+                    <span class="flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                        </svg>
+                        Chat on WhatsApp
+                    </span>
+                </a>
+            </div>
+            
+            <div class="mt-12 flex justify-center space-x-8 text-gray-400">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    100% Satisfaction Guarantee
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    Quick Start Process
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- Brand Section -->
+                <div class="md:col-span-2">
+                    <div class="logo-container mb-6">
+                        <img src="https://image2url.com/images/1765164278952-9eac1aab-8d79-4807-8cb0-31dd245fdf93.png" alt="Harram Mehmood Logo" class="logo bg-white rounded-lg p-2">
+                        <div>
+                            <h3 class="text-2xl font-bold">Harram Mehmood</h3>
+                            <p class="text-emerald-400">Growth Manager & MVP Specialist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Helping startups and businesses transform their ideas into market-ready MVPs in 90 days. 
+                        Expert in growth strategy, development, and launch optimization.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/harram-mehmood-71b508287" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/923701662757" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="experience.html" class="text-gray-400 hover:text-white transition-colors">Experience</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">MVP Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Growth Strategy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Web Applications</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Mobile Apps</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                        © 2024 Harram Mehmood. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 text-sm text-gray-400">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Splitting.js for text animations
+            if (typeof Splitting !== 'undefined') {
+                Splitting();
+            }
+            
+            // Floating shapes animation
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                shape.style.animationDelay = `${index * 2}s`;
+            });
+            
+            // Form handling
+            const contactForm = document.getElementById('contact-form-element');
+            const submitBtn = document.getElementById('submit-btn');
+            const submitText = document.getElementById('submit-text');
+            const submitLoading = document.getElementById('submit-loading');
+            const formMessage = document.getElementById('form-message');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset previous messages
+                formMessage.classList.add('hidden');
+                formMessage.classList.remove('form-success', 'form-error');
+                
+                // Validate form
+                let isValid = true;
+                const requiredFields = ['first-name', 'last-name', 'email', 'message'];
+                
+                requiredFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    const errorMsg = field.parentNode.querySelector('.error-message');
+                    
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        errorMsg.classList.remove('hidden');
+                        field.classList.add('border-red-500');
+                    } else {
+                        errorMsg.classList.add('hidden');
+                        field.classList.remove('border-red-500');
+                        
+                        // Email validation
+                        if (fieldId === 'email' && !isValidEmail(field.value)) {
+                            isValid = false;
+                            errorMsg.classList.remove('hidden');
+                            errorMsg.textContent = 'Please enter a valid email address';
+                            field.classList.add('border-red-500');
+                        }
+                    }
+                });
+                
+                if (isValid) {
+                    // Show loading state
+                    submitText.textContent = 'Sending...';
+                    submitLoading.classList.remove('hidden');
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission (replace with actual form handling)
+                    setTimeout(() => {
+                        // Reset button
+                        submitText.textContent = 'Message Sent!';
+                        submitLoading.classList.add('hidden');
+                        
+                        // Show success message
+                        formMessage.textContent = 'Thank you for your message! I\'ll get back to you within 24 hours.';
+                        formMessage.classList.remove('hidden');
+                        formMessage.classList.add('form-success');
+                        
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Reset button after delay
+                        setTimeout(() => {
+                            submitText.textContent = 'Send Message';
+                            submitBtn.disabled = false;
+                            formMessage.classList.add('hidden');
+                        }, 3000);
+                        
+                    }, 2000);
+                }
+            });
+            
+            // Email validation function
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Mobile menu toggle
+            window.toggleMobileMenu = function() {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                mobileMenu.classList.toggle('active');
+            };
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const menuButton = document.querySelector('button[onclick="toggleMobileMenu()"]');
+                
+                if (!mobileMenu.contains(e.target) && !menuButton.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+            
+            // Add scroll effect to navigation
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 100) {
+                    nav.classList.add('shadow-lg');
+                } else {
+                    nav.classList.remove('shadow-lg');
+                }
+            });
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.contact-card, .highlight-box').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
